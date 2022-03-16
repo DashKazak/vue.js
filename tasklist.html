@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue!</title>
+    <script src = "https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <h1>Hello Vue Loops</h1>
+    
+    <div id = "app">
+        <label for = "task">Please neter your to do task: </label>
+        <input if = "task" v-model = "newTask">
+        <button v-on:click = "addTask">Add task</button>
+        <!--All the page that vue will manage goes here-->
+        <ul>
+            <li v-for = "task in taskList">{{task}}</li>
+        </ul>
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data(){
+                return{
+                    newTask: '',
+                    taskList:[] 
+                }
+            },
+            methods:{
+                addTask(){
+                    this.taskList.push(this.newTask) ///adding to the tasklist 
+                    this.newTask=''
+                }
+            }
+        })
+       app.mount('#app')
+    </script>
+</body>
+</html>
